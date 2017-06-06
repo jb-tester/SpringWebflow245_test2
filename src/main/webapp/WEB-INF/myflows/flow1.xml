@@ -2,12 +2,12 @@
 <flow xmlns="http://www.springframework.org/schema/webflow"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
-<var class="com.mytests.spring.webflow244.javaConfig.test2.Service1Impl" name="s1"/>
-<view-state id="view1" view="view1">
-    <transition on="next" to="flow2"/>
-</view-state>
+    <var class="com.mytests.spring.webflow244.javaConfig.test2.Service1Impl" name="s1"/>
+    <view-state id="view1" view="view1">
+        <transition on="next" to="flow2"/>
+    </view-state>
     <subflow-state id="flow2" subflow="myflow2">
-    <input name="p1" type="com.mytests.spring.webflow244.javaConfig.test2.Service1" value="service1Impl"/>
-</subflow-state>
-<end-state id="view2"/>
+        <input name="p1" type="com.mytests.spring.webflow244.javaConfig.test2.Service1" value="service1Impl"/>
+    </subflow-state>
+    <end-state id="view2"/>
 </flow>

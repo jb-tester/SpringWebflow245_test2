@@ -6,6 +6,7 @@
     <view-state id="view1" view="view1">
         <transition on="next" to="flow2"/>
     </view-state>
+    <!--<subflow-state id="flow2" subflow="flow2">-->
     <subflow-state id="flow2" subflow="webflows/flow2">
         <input name="p1" type="com.mytests.spring.webflow244.javaConfig.test2.Service1" value="service1Impl"/>
     </subflow-state>
