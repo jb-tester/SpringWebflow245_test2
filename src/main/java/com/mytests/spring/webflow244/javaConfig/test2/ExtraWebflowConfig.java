@@ -22,8 +22,13 @@ import java.util.Arrays;
 @Configuration
 public class ExtraWebflowConfig extends AbstractFlowConfiguration {
 
-    @Autowired
+    final
     MyWebConfig myWebConfig;
+
+    @Autowired
+    public ExtraWebflowConfig(MyWebConfig myWebConfig) {
+        this.myWebConfig = myWebConfig;
+    }
 
     @Bean
     public FlowDefinitionRegistry parentFlowRegistry() {

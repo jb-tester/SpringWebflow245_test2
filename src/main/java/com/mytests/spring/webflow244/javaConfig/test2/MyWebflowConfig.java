@@ -26,8 +26,12 @@ import java.util.Arrays;
 @Configuration
 public class MyWebflowConfig extends AbstractFlowConfiguration {
 
-    @Qualifier("extraWebflowConfig") @Autowired
-    private ExtraWebflowConfig extraWebflowConfig;
+    private final ExtraWebflowConfig extraWebflowConfig;
+
+    @Autowired
+    public MyWebflowConfig(@Qualifier("extraWebflowConfig") ExtraWebflowConfig extraWebflowConfig) {
+        this.extraWebflowConfig = extraWebflowConfig;
+    }
 
 
     @Bean
