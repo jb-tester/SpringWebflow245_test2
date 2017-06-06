@@ -24,29 +24,16 @@ import java.util.Arrays;
  * *******************************
  */
 @Configuration
-
 public class MyWebflowConfig extends AbstractFlowConfiguration {
 
-    @Autowired
-    MyWebConfig myWebConfig;
+    @Qualifier("extraWebflowConfig") @Autowired
+    private ExtraWebflowConfig extraWebflowConfig;
 
-
-
-
-    @Bean
-    public FlowDefinitionRegistry parentFlowRegistry() {
-        return getFlowDefinitionRegistryBuilder(flowBuilderServices())
-                .addFlowLocation("/WEB-INF/extraflows/extra.xml", "extra")
-                .build();
-
-    }
 
     @Bean
     public FlowDefinitionRegistry flowRegistry() {
-        return getFlowDefinitionRegistryBuilder(flowBuilderServices())
-                .setParent(parentFlowRegistry())
-
-
+        return getFlowDefinitionRegistryBuilder(this.extraWebflowConfig.flowBuilderServices())
+                .setParent(this.extraWebflowConfig.parentFlowRegistry())
                // .addFlowLocation("/WEB-INF/myflows/flow1.xml")
                 //.addFlowLocation("/WEB-INF/myflows/flow2.xml")
 
@@ -56,29 +43,11 @@ public class MyWebflowConfig extends AbstractFlowConfiguration {
                //.setBasePath("/WEB-INF/webflows/")
                //.addFlowLocationPattern("flow?/flow?.xml")
 
-                 .setBasePath("/WEB-INF/")
-                 .addFlowLocationPattern("webflows/flow?/flow?.xml")
-                .build();
-    }
-    @Bean
-    public FlowExecutor flowExecutor() {
-        return getFlowExecutorBuilder(flowRegistry()).build();
-    }
-
-    @Bean
-    public FlowBuilderServices flowBuilderServices() {
-        return getFlowBuilderServicesBuilder().
-                setViewFactoryCreator(viewFactoryCreator())
+                 .setBasePath("/WEB-INF")
+                 .addFlowLocationPattern("/webflows/flow?/flow?.xml")
                 .build();
     }
 
-    @Bean
-    public ViewFactoryCreator viewFactoryCreator() {
-        MvcViewFactoryCreator factoryCreator = new MvcViewFactoryCreator();
-        factoryCreator.setViewResolvers(Arrays.<ViewResolver>asList(this.myWebConfig.resolver()));
-        factoryCreator.setUseSpringBeanBinding(true);
-        return factoryCreator;
-    }
 
     @Bean
     public FlowHandlerMapping flowHandlerMapping() {
@@ -86,6 +55,11 @@ public class MyWebflowConfig extends AbstractFlowConfiguration {
         handlerMapping.setOrder(-1);
         handlerMapping.setFlowRegistry(flowRegistry());
         return handlerMapping;
+    }
+
+    @Bean
+    public FlowExecutor flowExecutor() {
+        return getFlowExecutorBuilder(flowRegistry()).build();
     }
 
     @Bean
