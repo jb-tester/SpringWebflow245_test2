@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
+    <input name="p1" type="com.mytests.spring.webflow244.javaConfig.test2.Service1" required="true"/>
+    <view-state id="view2" view="view2">
+
+    </view-state>
+
+</flow>
