@@ -26,6 +26,7 @@ import java.util.Arrays;
 @Configuration
 public class MyWebflowConfig extends AbstractFlowConfiguration {
 
+    public static final String BASE_PATH = "/WEB-INF";
     private final ExtraWebflowConfig extraWebflowConfig;
 
     @Autowired
@@ -47,8 +48,9 @@ public class MyWebflowConfig extends AbstractFlowConfiguration {
                //.setBasePath("/WEB-INF/webflows/")
                //.addFlowLocationPattern("flow?/flow?.xml")
 
-                 .setBasePath("/WEB-INF")
-                 .addFlowLocationPattern("/webflows/flow?/flow?.xml")
+               //  .setBasePath(BASE_PATH)
+               .setBasePath("/WEB-INF/")
+                .addFlowLocationPattern("webflows/flow?/flow?.xml")
                 .build();
     }
 
