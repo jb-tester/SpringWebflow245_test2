@@ -40,17 +40,17 @@ public class MyWebflowConfig extends AbstractFlowConfiguration {
         return getFlowDefinitionRegistryBuilder(this.extraWebflowConfig.flowBuilderServices())
                 .setParent(this.extraWebflowConfig.parentFlowRegistry())
                // .addFlowLocation("/WEB-INF/myflows/flow1.xml")
-                //.addFlowLocation("/WEB-INF/myflows/flow2.xml")
+               // .addFlowLocation("/WEB-INF/myflows/flow2.xml")
 
                 //  .addFlowLocation("/WEB-INF/myflows/flow1.xml")
                 //.addFlowLocation("/WEB-INF/myflows/flow2.xml","myflow2")
 
-               //.setBasePath("/WEB-INF/webflows/")
-               //.addFlowLocationPattern("flow?/flow?.xml")
+               .setBasePath("/WEB-INF/webflows/")
+               .addFlowLocationPattern("flow?/flow?.xml")
 
                //  .setBasePath(BASE_PATH)
-               .setBasePath("/WEB-INF/")
-                .addFlowLocationPattern("webflows/flow?/flow?.xml")
+               //.setBasePath("/WEB-INF/")
+                //.addFlowLocationPattern("webflows/flow?/flow?.xml")
                 .build();
     }
 

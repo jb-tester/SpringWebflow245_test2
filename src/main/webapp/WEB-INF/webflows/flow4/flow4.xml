@@ -2,6 +2,6 @@
 <flow xmlns="http://www.springframework.org/schema/webflow"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
-    <view-state id="extra_view" view="extraView"/>
-    <subflow-state id="subextra" subflow="flow4"/>
+ <!-- this is cyclic dependency - test that no SOE occurs -->
+ <!--<subflow-state id="extra" subflow="extra"/>-->
 </flow>
